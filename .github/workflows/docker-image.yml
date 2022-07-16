@@ -15,14 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: docker login
-      env: 
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}
-        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASS
+      run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag n8n-heroku:$(date +%s)
     - name: Docker Push
-      env: 
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}
-      run: docker push $DOCKER_USER/n8n-heroku
+      run: echo "${{ secrets.DOCKER_USER }}" | docker push ${{ secrets.DOCKER_USER }}/n8n-heroku
