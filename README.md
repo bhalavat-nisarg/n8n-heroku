@@ -17,6 +17,7 @@ This is a [Heroku](https://heroku.com/) focused container implementation for the
 
 ## Requirements
 * Heroku CLI
+* Github Actions
 
 ## Setup
 
