@@ -19,4 +19,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag n8n-heroku:$(date +%s)
     - name: Docker Push
-      run: echo "${{ secrets.DOCKER_USER }}" | docker push ${{ secrets.DOCKER_USER }}/n8n-heroku
+      run: docker push nisargb9/n8n-heroku
